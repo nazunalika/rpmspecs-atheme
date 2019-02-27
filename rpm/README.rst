@@ -44,9 +44,7 @@ Yes, I do.
 Did you make any changes to the code?
 +++++++++++++++++++++++++++++++++++++
 
-Simple answer: No.
-
-Long answer: If you review my spec file, you will find that I do not modify the source code of Atheme. 
+Patches were added for the code. But the tarballs are not directly modified from their source as the builds are done 100% in copr.
 
 So what did you change?
 +++++++++++++++++++++++
@@ -86,7 +84,7 @@ Ensure you are using mock and that your .rpmmacros are setup correctly. The comm
 Do you support other architectures/Can it build in $ARCH architecture?
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-I only have x86 systems, so I'm unable to try it out on ARM, PPC64, etc. However, if you want to take my srpm and try, go for it. I would love to see the results. If it works, I will add the architecture to the copr repo (if available).
+I only have x86 systems, so I'm unable to try it out on ARM, PPC64, etc. However, if you want to take my srpm and try, go for it. I would love to see the results. Currently PPC64 does work in copr.
 
 I'd like to contribute to this or make a change...
 ++++++++++++++++++++++++++++++++++++++++++++++++++
