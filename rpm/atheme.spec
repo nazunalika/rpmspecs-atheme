@@ -16,7 +16,7 @@
 # If this were to become an official package, I would consider it.
 Name:		atheme
 Version:	%{major_version}.%{minor_version}.%{micro_version}%{revision}
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Services for IRC Networks
 
 Group:		System Environment/Daemons
@@ -102,11 +102,13 @@ git submodule update
 	--with-ldap \
 	--without-libmowgli
 
-make %{?_smp_mflags}
+#make %{?_smp_mflags}
+%make_build
 
 
 %install
-make install DESTDIR=%{buildroot}
+#make install DESTDIR=%{buildroot}
+%make_install
 
 %{__mkdir} -p ${RPM_BUILD_ROOT}%{_sysconfdir}/logrotate.d
 %{__install} -m 0644 %{SOURCE2} \
@@ -199,6 +201,9 @@ make install DESTDIR=%{buildroot}
 %{_libdir}/libathemecore.so
 
 %changelog
+* Tue Oct 27 2020 Louis Abel <tucklesepk@gmail.com> - 7.2.10r2-3
+- Replace some build pieces with macros
+
 * Tue Feb 26 2019 Louis Abel <tucklesepk@gmail.com> - 7.2.10r2-2
 - Automated build support
 - Drop Fedora 28
