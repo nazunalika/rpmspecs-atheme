@@ -1,0 +1,26 @@
+diff --git a/libathemecore/ptasks.c b/libathemecore/ptasks.c
+index 72f90a4ac..9406e2456 100644
+--- a/libathemecore/ptasks.c
++++ b/libathemecore/ptasks.c
+@@ -49,7 +49,7 @@ int get_version_string(char *buf, size_t bufsize)
+ 		PACKAGE_STRING, me.name, revision, get_conf_opts(), ircd->ircdname, ci->id);
+ #else
+ 	return snprintf(buf, bufsize, "%s. %s %s :%s [%s] [enc:%s] Build Date: %s",
+-		PACKAGE_STRING, me.name, revision, get_conf_opts(), ircd->ircdname, ci->id, __DATE__);
++		PACKAGE_STRING, me.name, revision, get_conf_opts(), ircd->ircdname, ci->id, "");
+ #endif
+ }
+ 
+diff --git a/modules/operserv/uptime.c b/modules/operserv/uptime.c
+index 9d5ed7ade..62b20debd 100644
+--- a/modules/operserv/uptime.c
++++ b/modules/operserv/uptime.c
+@@ -36,7 +36,7 @@ static void os_cmd_uptime(sourceinfo_t *si, int parc, char *parv[])
+ #ifdef REPRODUCIBLE_BUILDS
+ 	command_success_nodata(si, "%s [%s]", PACKAGE_STRING, revision);
+ #else
+-        command_success_nodata(si, "%s [%s] Build Date: %s", PACKAGE_STRING, revision, __DATE__);
++        command_success_nodata(si, "%s [%s] Build Date: %s", PACKAGE_STRING, revision, "");
+ #endif
+         command_success_nodata(si, _("Services have been up for %s"), timediff(CURRTIME - me.start));
+ 	command_success_nodata(si, _("Current PID: %d"), getpid());

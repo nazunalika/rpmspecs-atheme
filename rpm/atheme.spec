@@ -26,6 +26,7 @@ Source0:	https://github.com/%{name}/%{name}/releases/download/%{version_director
 Source1:	%{name}.service
 Source2:	%{name}.logrotate
 Patch1:		%{name}-lockmodes.patch
+Patch2:		%{name}-nodate.patch
 
 BuildRequires:	cracklib-devel
 BuildRequires:	perl-ExtUtils-Embed
@@ -80,7 +81,7 @@ against atheme.
 
 %prep
 %setup -q -n %{name}-%{version_directory_number}
-%patch -P 1 -p1
+%patch -P 1 -P 2 -p1
 
 %build
 # They decided to do submodules. Very anti-pattern.
@@ -102,9 +103,7 @@ git submodule update
 	--with-ldap \
 	--without-libmowgli
 
-#make %{?_smp_mflags}
-%make_build
-
+make %{?_smp_mflags}
 
 %install
 #make install DESTDIR=%{buildroot}
@@ -202,7 +201,7 @@ git submodule update
 
 %changelog
 * Tue Oct 27 2020 Louis Abel <tucklesepk@gmail.com> - 7.2.10r2-3
-- Replace some build pieces with macros
+- Replace some build pieces with macros, except make
 
 * Tue Feb 26 2019 Louis Abel <tucklesepk@gmail.com> - 7.2.10r2-2
 - Automated build support
