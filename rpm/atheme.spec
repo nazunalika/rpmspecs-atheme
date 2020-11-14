@@ -84,6 +84,7 @@ against atheme.
 %patch -P 1 -P 2 -p1
 
 %build
+%define _lto_cflags %nil
 # They decided to do submodules. Very anti-pattern.
 git submodule init
 git submodule update
