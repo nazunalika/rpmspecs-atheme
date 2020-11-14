@@ -38,6 +38,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	gcc
 BuildRequires:	gcc-c++
 BuildRequires:	git
+# Fix future Fedora builds
+BuildRequires:	perl(FindBin)
 
 Requires:	openssl
 Requires:	pcre
@@ -84,7 +86,6 @@ against atheme.
 %patch -P 1 -P 2 -p1
 
 %build
-%define _lto_cflags %nil
 # They decided to do submodules. Very anti-pattern.
 git submodule init
 git submodule update
@@ -104,7 +105,8 @@ git submodule update
 	--with-ldap \
 	--without-libmowgli
 
-make %{?_smp_mflags}
+#make %{?_smp_mflags}
+%make_build
 
 %install
 #make install DESTDIR=%{buildroot}
@@ -203,6 +205,7 @@ make %{?_smp_mflags}
 %changelog
 * Tue Oct 27 2020 Louis Abel <tucklesepk@gmail.com> - 7.2.10r2-3
 - Replace some build pieces with macros, except make
+- Add perl(FindBin) requirement
 
 * Tue Feb 26 2019 Louis Abel <tucklesepk@gmail.com> - 7.2.10r2-2
 - Automated build support
