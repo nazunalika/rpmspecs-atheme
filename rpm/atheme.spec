@@ -2,8 +2,7 @@
 %global _hardened_build 1
 %global major_version 7
 %global minor_version 2
-%global micro_version 10
-%global revision r2
+%global micro_version 11
 # This is because the version of the package and the actual source tarball 
 # differ pretty wildly
 %global version_directory_number v%{major_version}.%{minor_version}.%{micro_version}-%{revision}
@@ -15,8 +14,8 @@
 # on the configure line and make them point to -services.
 # If this were to become an official package, I would consider it.
 Name:		atheme
-Version:	%{major_version}.%{minor_version}.%{micro_version}%{revision}
-Release:	3%{?dist}
+Version:	%{major_version}.%{minor_version}.%{micro_version}
+Release:	1%{?dist}
 Summary:	Services for IRC Networks
 
 Group:		System Environment/Daemons
@@ -203,6 +202,9 @@ git submodule update
 %{_libdir}/libathemecore.so
 
 %changelog
+* Wed May 19 2021 Louis Abel <tucklesepk@gmail.com> - 7.2.11
+- Update to 7.2.11
+
 * Tue Oct 27 2020 Louis Abel <tucklesepk@gmail.com> - 7.2.10r2-3
 - Replace some build pieces with macros, except make
 - Add perl(FindBin) requirement
