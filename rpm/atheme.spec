@@ -5,7 +5,7 @@
 %global micro_version 11
 # This is because the version of the package and the actual source tarball 
 # differ pretty wildly
-%global version_directory_number v%{major_version}.%{minor_version}.%{micro_version}-%{revision}
+%global version_directory_number v%{major_version}.%{minor_version}.%{micro_version}
 %global build_with_plugins 0
 
 # Using atheme-services as a name would be fine, but that would
