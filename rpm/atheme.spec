@@ -180,6 +180,7 @@ against atheme.
 %{_datadir}/locale/es/LC_MESSAGES/atheme.mo
 %{_datadir}/locale/fr/LC_MESSAGES/atheme.mo
 %{_datadir}/locale/ru/LC_MESSAGES/atheme.mo
+%{_datadir}/locale/tr/LC_MESSAGES/atheme.mo
 
 # OS Specific
 %{_unitdir}/%{name}.service
