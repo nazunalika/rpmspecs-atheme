@@ -89,8 +89,8 @@ against atheme.
 
 %build
 # They decided to do submodules. Very anti-pattern.
-git submodule init
-git submodule update
+#git submodule init
+#git submodule update
 # I am explicitly calling ldap, perl, pcre, cracklib support
 %configure \
 	--sysconfdir="%{_sysconfdir}/%{name}" \
