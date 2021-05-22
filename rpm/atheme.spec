@@ -21,7 +21,7 @@ Summary:	Services for IRC Networks
 Group:		System Environment/Daemons
 License:	MIT
 URL:		https://atheme.net
-Source0:	https://github.com/%{name}/%{name}/releases/download/%{version_directory_number}/%{name}-%{version_directory_number}.tar.xz
+Source0:	https://github.com/%{name}/%{name}/releases/download/%{version_directory_number}/%{name}-services-%{version_directory_number}.tar.xz
 Source1:	%{name}.service
 Source2:	%{name}.logrotate
 Patch1:		%{name}-lockmodes.patch
@@ -50,6 +50,9 @@ Requires(post):	systemd
 Requires(preun): systemd
 Requires(postun): systemd
 Requires:	systemd
+
+Provides:	atheme = %{version}-%{release}
+Provides:	atheme-services = %{version}-%{release}
 
 %description
 Atheme is a feature-packed, extremely customisable IRC services
@@ -81,7 +84,7 @@ This package contains the development headers required for developing
 against atheme.
 
 %prep
-%setup -q -n %{name}-%{version_directory_number}
+%setup -q -n %{name}-services-%{version_directory_number}
 %patch -P 1 -P 2 -p1
 
 %build
