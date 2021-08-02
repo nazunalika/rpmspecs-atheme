@@ -15,7 +15,7 @@
 # If this were to become an official package, I would consider it.
 Name:		atheme
 Version:	%{major_version}.%{minor_version}.%{micro_version}
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Services for IRC Networks
 
 Group:		System Environment/Daemons
@@ -135,6 +135,11 @@ against atheme.
 %{__install} -m 0644 include/protocol/*.h \
 	${RPM_BUILD_ROOT}%{_includedir}/%{name}/protocol
 
+# missing tmpfiles
+cat > ${RPM_BUILD_ROOT}%{_tmpfilesdir}/%{name}.conf <<EOF
+d /run/atheme 0755 atheme atheme -
+EOF
+
 %pre
 # Since we are not an official Fedora build, we don't get an
 # assigned uid/gid. This may make it difficult when installed
@@ -149,6 +154,7 @@ against atheme.
 
 %post
 %systemd_post %{name}.service
+systemd-tmpfiles --create %{name}.conf || :
 
 %postun
 %systemd_postun_with_restart %{name}.service
@@ -181,6 +187,7 @@ against atheme.
 %{_datadir}/locale/fr/LC_MESSAGES/atheme.mo
 %{_datadir}/locale/ru/LC_MESSAGES/atheme.mo
 %{_datadir}/locale/tr/LC_MESSAGES/atheme.mo
+%{_tmpfilesdir}/%{name}.conf
 
 # OS Specific
 %{_unitdir}/%{name}.service
@@ -206,7 +213,11 @@ against atheme.
 %{_libdir}/libathemecore.so
 
 %changelog
-* Wed May 19 2021 Louis Abel <tucklesepk@gmail.com> - 7.2.11
+* Sun Aug 01 2021 Louis Abel <tucklesepk@gmail.com> - 7.2.11-2
+- Add missing tmpfiles configuration
+- Fix service file to not run as root
+
+* Wed May 19 2021 Louis Abel <tucklesepk@gmail.com> - 7.2.11-1
 - Update to 7.2.11
 
 * Tue Oct 27 2020 Louis Abel <tucklesepk@gmail.com> - 7.2.10r2-3
