@@ -136,6 +136,7 @@ against atheme.
 	${RPM_BUILD_ROOT}%{_includedir}/%{name}/protocol
 
 # missing tmpfiles
+%{__mkdir} -p ${RPM_BUILD_ROOT}%{_tmpfilesdir}
 cat > ${RPM_BUILD_ROOT}%{_tmpfilesdir}/%{name}.conf <<EOF
 d /run/atheme 0755 atheme atheme -
 EOF
