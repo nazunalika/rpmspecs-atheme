@@ -2,7 +2,7 @@
 %global _hardened_build 1
 %global major_version 7
 %global minor_version 2
-%global micro_version 11
+%global micro_version 12
 # This is because the version of the package and the actual source tarball 
 # differ pretty wildly
 %global version_directory_number v%{major_version}.%{minor_version}.%{micro_version}
@@ -15,7 +15,7 @@
 # If this were to become an official package, I would consider it.
 Name:		atheme
 Version:	%{major_version}.%{minor_version}.%{micro_version}
-Release:	2%{?dist}
+Release:	1%{?dist}
 Summary:	Services for IRC Networks
 
 Group:		System Environment/Daemons
@@ -111,7 +111,6 @@ against atheme.
 %make_build
 
 %install
-#make install DESTDIR=%{buildroot}
 %make_install
 
 %{__mkdir} -p ${RPM_BUILD_ROOT}%{_sysconfdir}/logrotate.d
@@ -214,6 +213,10 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_libdir}/libathemecore.so
 
 %changelog
+* Sun Jan 30 2022 Louis Abel <tucklesepk@gmail.com> - 7.2.12-1
+- Rebase to 7.2.12, which addresses auth bypass vulnerability
+  when used with InspIRCd.
+
 * Sun Aug 01 2021 Louis Abel <tucklesepk@gmail.com> - 7.2.11-2
 - Add missing tmpfiles configuration
 - Fix service file to not run as root
