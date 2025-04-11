@@ -31,7 +31,6 @@ BuildRequires:	cracklib-devel
 BuildRequires:	perl-ExtUtils-Embed
 BuildRequires:	openssl-devel
 BuildRequires:	openldap-devel
-BuildRequires:	pcre-devel
 BuildRequires:	qrencode-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gcc
@@ -39,6 +38,12 @@ BuildRequires:	gcc-c++
 BuildRequires:	git
 # Fix future Fedora builds
 BuildRequires:	perl(FindBin)
+
+%if 0%{?rhel} >= 10
+BuildRequires:	pcre2-devel
+%else
+BuildRequires:	pcre-devel
+%endif
 
 Requires:	openssl
 Requires:	pcre
