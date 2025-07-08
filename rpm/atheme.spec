@@ -41,12 +41,13 @@ BuildRequires:	perl(FindBin)
 
 %if 0%{?rhel} >= 10
 BuildRequires:	pcre2-devel
+Requires:	pcre2
 %else
 BuildRequires:	pcre-devel
+Requires:	pcre
 %endif
 
 Requires:	openssl
-Requires:	pcre
 Requires:	cracklib
 
 # OS Specific Requirements
